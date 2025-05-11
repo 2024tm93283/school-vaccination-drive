@@ -101,16 +101,6 @@ npm start
 
 ---
 
-## Screenshots
-
-> Include screenshots of:
-> - Dashboard
-> - Student page
-> - Drive form
-> - Reports table
-
----
-
 ## Submission Notes
 - All 5 user stories implemented
 - Full backend validations, CSV features
