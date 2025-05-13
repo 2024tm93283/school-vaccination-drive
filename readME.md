@@ -91,7 +91,7 @@ npm install
 npm start
 ```
 
-> Ensure Flask runs on `http://localhost:5000` by default
+> Ensure Flask runs on `http://localhost:5001` by default
 
 ---
 

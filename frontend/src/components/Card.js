@@ -6,7 +6,7 @@ export default function Card({ children, style, className = '' }) {
       className={`card ${className}`}
       style={{
         background: 'var(--card-bg)',
-        borderLeft: '6px solid var(--card-border)',
+        border: '6px solid var(--card-border)',
         borderRadius: '12px',
         padding: '20px',
         margin: '10px 0',

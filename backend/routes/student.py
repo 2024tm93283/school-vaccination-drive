@@ -50,7 +50,7 @@ def upload_csv():
     file = request.files['file']
     rows = parse_csv_upload(file)
     for row in rows:
-        student = Student(name=row['name'], class_grade=row['class'])
+        student = Student(name=row['name'], class_grade=row['class_grade'])
         db.session.add(student)
     db.session.commit()
     return jsonify({'message': 'CSV uploaded'}), 201

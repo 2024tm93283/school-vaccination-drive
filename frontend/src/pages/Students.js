@@ -93,7 +93,7 @@ export default function Students() {
   return (
     <div className="container">
       <div className="dashboard-header">
-        <h1>📘 Student Vaccination Overview</h1>
+        <h1>📘 Vaccination Overview</h1>
         <p>
           Search, add, manage and vaccinate students from this dashboard-style
           screen.
@@ -190,7 +190,7 @@ export default function Students() {
               </label>
               <select
                 value={filters.vaccinated}
-                style={{ height: "30px", padding: "2px 10px", width: "100%" }}
+                style={{ height: "30px", padding: "2px 10px", width: "100%", marginBottom: "10px" }}
                 onChange={(e) =>
                   setFilters({ ...filters, vaccinated: e.target.value })
                 }
@@ -202,7 +202,7 @@ export default function Students() {
             </div>
 
             <div style={{ flex: "0 0 auto", alignSelf: "flex-end" }}>
-              <button type="submit" className="orange-button">
+              <button type="submit" className="submit-details">
                 Run Query
               </button>
             </div>
@@ -236,32 +236,36 @@ export default function Students() {
       {/* Table Section */}
       <Card>
         <h3>📋 Student List</h3>
-        <Table
-          headers={[
-            "Student ID",
-            "Full Name",
-            "Class",
-            "Vaccinated",
-            "Actions",
-          ]}
-          rows={students.map((s) => ({
-            "Student ID": s.id,
-            "Full Name": s.name,
-            Class: s.class_grade,
-            Vaccinated: s.vaccinated,
-            Actions: (
-              <>
-                <button onClick={() => handleDelete(s.id)}>🗑 Delete</button>
-                <button
-                  onClick={() => handleVaccinate(s.id)}
-                  style={{ marginLeft: "10px" }}
-                >
-                  ✅ Vaccinate
-                </button>
-              </>
-            ),
-          }))}
-        />
+        {students.length > 0 ? (
+          <Table
+            headers={[
+              "Student ID",
+              "Full Name",
+              "Class",
+              "Vaccinated",
+              "Actions",
+            ]}
+            rows={students.map((s) => ({
+              "Student ID": s.id,
+              "Full Name": s.name,
+              Class: s.class_grade,
+              Vaccinated: s.vaccinated ? 'Yes' : 'No',
+              Actions: (
+                <>
+                  <button onClick={() => handleDelete(s.id)}>🗑 Delete</button>
+                  <button
+                    onClick={() => handleVaccinate(s.id)}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    ✅ Vaccinate
+                  </button>
+                </>
+              ),
+            }))}
+          />
+        ) : (
+          <p>No students found</p> // Message when there are no students
+        )}
       </Card>
     </div>
   );

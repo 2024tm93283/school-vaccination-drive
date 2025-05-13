@@ -10,7 +10,7 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     with app.app_context():
         from models import Student, VaccinationDrive, VaccinationStatus
@@ -28,4 +28,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5001, debug=True)

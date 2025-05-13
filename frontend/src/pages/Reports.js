@@ -36,20 +36,29 @@ export default function Reports() {
       </div>
 
       <Card>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",   
-            justifyContent: "right",
-          }}
-        >
-          <button onClick={handleExport}>⬇ Export CSV</button>
-        </div>
-        <Table
-          headers={["student_id", "name", "class", "vaccine", "date"]}
-          rows={records}
-        />
+        {records.length > 0 ? (
+          <>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end", // Moves export button to the right
+                marginBottom: "10px",
+              }}
+            >
+              <button onClick={handleExport}>⬇ Export CSV</button>
+            </div>
+            <Table
+              headers={["student_id", "name", "class", "vaccine", "date"]}
+              rows={records}
+            />
+          </>
+        ) : (
+          <div style={{ padding: "1rem" }}>
+            <p>No records found</p>
+          </div>
+        )}
       </Card>
+
     </div>
   );
 }

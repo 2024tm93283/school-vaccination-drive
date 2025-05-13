@@ -108,7 +108,7 @@ export default function Drives() {
               required
               style={{ flex: '1 1 180px' }}
             />
-            <button type="submit" className="orange-button">Create Drive</button>
+            <button type="submit" className="submit-details">Create Drive</button>
           </form>
         )}
       </Card>
@@ -116,21 +116,26 @@ export default function Drives() {
       {/* Drives Table */}
       <Card>
         <h3>📋 Scheduled Drives</h3>
-        <Table
-          headers={['ID', 'Vaccine Name', 'Date', 'Doses', 'Applicable Classes','Remaining Doses', 'Actions']}
-          rows={drives.map((d) => ({
-            'ID': d.id,
-            'Vaccine Name': d.vaccine_name,
-            'Date': d.date,
-            'Doses': d.doses_available,
-            'Applicable Classes': d.applicable_classes,
-            'Remaining Doses':d.remaining_doses,
-            'Actions': new Date(d.date) > new Date()
-              ? <button onClick={() => handleEditClick(d)} className="orange-button">✏️ Edit</button>
-              : <span style={{ color: 'gray' }}>🔒 Locked</span>
-          }))}
-        />
+        {drives.length > 0 ? (
+          <Table
+            headers={['ID', 'Vaccine Name', 'Date', 'Doses', 'Applicable Classes', 'Remaining Doses', 'Actions']}
+            rows={drives.map((d) => ({
+              'ID': d.id,
+              'Vaccine Name': d.vaccine_name,
+              'Date': d.date,
+              'Doses': d.doses_available,
+              'Applicable Classes': d.applicable_classes,
+              'Remaining Doses': d.remaining_doses,
+              'Actions': new Date(d.date) > new Date()
+                ? <button onClick={() => handleEditClick(d)} className="orange-button">✏️ Edit</button>
+                : <span style={{ color: 'gray' }}>🔒 Locked</span>
+            }))}
+          />
+        ) : (
+          <p>no upcoming drives</p> // Message when there are no drives
+        )}
       </Card>
+
 
       {/* Edit Modal */}
       {editDrive && (

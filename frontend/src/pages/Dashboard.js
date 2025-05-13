@@ -22,13 +22,13 @@ export default function Dashboard() {
   return (
     <div className="container">
       <div className="dashboard-header">
-        <h1>📘 School Vaccination Dashboard</h1>
+        <h1>📘 Vaccination Dashboard</h1>
         <p>Welcome! Here’s an overview of student vaccination progress.</p>
       </div>
 
       {/* Stat Tiles */}
       <div className="dashboard-grid">
-        <Card className="stat-card orange">
+        <Card className="stat-card">
           <h3>👨‍🎓 Total Students</h3>
           <p className="stat-number">{data.total_students ?? '—'}</p>
         </Card>
